@@ -5,8 +5,9 @@ const postRouter = require("./routes/post_route");
 const authRouter = require("./routes/auth_route");
 const cors = require("cors");
 const navRouter = require("./routes/nav_route");
+require("dotenv").config();
 
-const DB = "mongodb+srv://project:project@cluster0.w5kdvac.mongodb.net/EW";
+const DB = process.env.DB;
 
 const PORT = 5000;
 app.use(
