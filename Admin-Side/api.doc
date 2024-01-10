@@ -1,0 +1,18 @@
+Facebook api for posting in Pages-APi Access
+
+Url for publishing feed in pages with link:
+
+    link: https://graph.facebook.com/{your-page-id}/feed?message={message}&link={product-link}
+
+Url for publishing feed in pages with images:
+
+    link: https://graph.facebook.com/{page-id}/photos?url={URL_lInk}&caption={description}&access_token={facebookToken}
+
+Animated photos are not supported, and a photo must be less than 10MB in size.
+
+page id =307211838364854
+
+"107330562459364
+
+Instagram Business Account id
+    link: https://graph.facebook.com/107330562459364?fields=instagram_business_account
