@@ -4,13 +4,16 @@ export const getAllCategories = createAsyncThunk(
   "getAllCategories",
   async () => {
     try {
-      const res = await fetch(`http://localhost:5000/post/cat`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Cache-Control": "no-cache",
-        },
-      });
+      const res = await fetch(
+        `https://entrepreneur-woods.vercel.app/post/cat`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Cache-Control": "no-cache",
+          },
+        }
+      );
       //   console.log(res)
       if (!res.ok) {
         const errorData = await res.json();
