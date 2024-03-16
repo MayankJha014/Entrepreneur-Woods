@@ -3,14 +3,17 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const addNavLogo = createAsyncThunk("addNavLogo", async (navUrl) => {
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:5000/home/nav-logo", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-      body: JSON.stringify({ navLogo: navUrl }),
-    });
+    const res = await fetch(
+      "https://entrepreneur-woods.vercel.app/home/nav-logo",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify({ navLogo: navUrl }),
+      }
+    );
     if (!res.ok) {
       const errorData = await res.json();
       throw new Error(errorData.error);
@@ -28,14 +31,17 @@ export const updateNavLogo = createAsyncThunk(
   async (navUrl) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/home/update-nav", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-        body: JSON.stringify({ navLogo: navUrl }),
-      });
+      const res = await fetch(
+        "https://entrepreneur-woods.vercel.app/home/update-nav",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+          body: JSON.stringify({ navLogo: navUrl }),
+        }
+      );
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.error);
@@ -51,14 +57,17 @@ export const updateNavLogo = createAsyncThunk(
 export const addAdsLogo = createAsyncThunk("addAdsLogo", async (navUrl) => {
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:5000/home/ads-logo", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-      body: JSON.stringify({ adsLogo: navUrl }),
-    });
+    const res = await fetch(
+      "https://entrepreneur-woods.vercel.app/home/ads-logo",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify({ adsLogo: navUrl }),
+      }
+    );
     if (!res.ok) {
       const errorData = await res.json();
       throw new Error(errorData.error);
@@ -76,14 +85,17 @@ export const updateAdsLogo = createAsyncThunk(
   async (navUrl) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/home/update-ads", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-        body: JSON.stringify({ adsLogo: navUrl }),
-      });
+      const res = await fetch(
+        "https://entrepreneur-woods.vercel.app/home/update-ads",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+          body: JSON.stringify({ adsLogo: navUrl }),
+        }
+      );
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.error);
@@ -102,16 +114,19 @@ export const deleteNavComp = createAsyncThunk(
   async (formData) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/home/delete/nav-comp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-        body: JSON.stringify({
-          id: formData,
-        }),
-      });
+      const res = await fetch(
+        "https://entrepreneur-woods.vercel.app/home/delete/nav-comp",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+          body: JSON.stringify({
+            id: formData,
+          }),
+        }
+      );
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.error);
@@ -129,14 +144,17 @@ export const createNavComp = createAsyncThunk(
   async (formData) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/home/create/nav-comp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        "https://entrepreneur-woods.vercel.app/home/create/nav-comp",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.error);
@@ -153,7 +171,7 @@ export const createNavComp = createAsyncThunk(
 export const getHomeDetail = createAsyncThunk("getHomeDetail", async () => {
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:5000/home/nav", {
+    const res = await fetch("https://entrepreneur-woods.vercel.app/home/nav", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

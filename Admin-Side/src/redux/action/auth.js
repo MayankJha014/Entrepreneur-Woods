@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export const signup = createAsyncThunk("signUp", async (formData) => {
   try {
-    const res = await fetch("http://localhost:5000/signup", {
+    const res = await fetch("https://entrepreneur-woods.vercel.app/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export const signup = createAsyncThunk("signUp", async (formData) => {
 });
 export const signin = createAsyncThunk("signIn", async (formData) => {
   try {
-    const res = await fetch("http://localhost:5000/signin", {
+    const res = await fetch("https://entrepreneur-woods.vercel.app/signin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +55,7 @@ export const getUser = createAsyncThunk("getUser", async () => {
     const token = localStorage.getItem("token");
 
     console.log(token);
-    const res = await fetch("http://localhost:5000/getuser", {
+    const res = await fetch("https://entrepreneur-woods.vercel.app/getuser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

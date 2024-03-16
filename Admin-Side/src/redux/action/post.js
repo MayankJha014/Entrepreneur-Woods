@@ -7,14 +7,17 @@ import { useNavigate } from "react-router-dom";
 export const creatPost = createAsyncThunk("createPost", async (formData) => {
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:5000/creator/create-post", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-      body: JSON.stringify(formData),
-    });
+    const res = await fetch(
+      "https://entrepreneur-woods.vercel.app/creator/create-post",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify(formData),
+      }
+    );
     if (!res.ok) {
       const errorData = await res.json();
       throw new Error(errorData.error);
@@ -32,7 +35,7 @@ export const updatePost = createAsyncThunk("updatePost", async (formData) => {
   try {
     const token = localStorage.getItem("token");
     const res = await fetch(
-      `http://localhost:5000/creator/update-post/${formData}`,
+      `https://entrepreneur-woods.vercel.app/creator/update-post/${formData}`,
       {
         method: "POST",
         headers: {
@@ -58,13 +61,16 @@ export const updatePost = createAsyncThunk("updatePost", async (formData) => {
 export const getCreatorPost = createAsyncThunk("getCreatorPost", async () => {
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:5000/creator/post", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-    });
+    const res = await fetch(
+      "https://entrepreneur-woods.vercel.app/creator/post",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      }
+    );
     if (!res.ok) {
       const errorData = await res.json();
       throw new Error(errorData.error);
@@ -80,7 +86,7 @@ export const getCreatorPost = createAsyncThunk("getCreatorPost", async () => {
 export const generatePosts = createAsyncThunk("generatePosts", async () => {
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:5000/rss", {
+    const res = await fetch("https://entrepreneur-woods.vercel.app/rss", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -104,13 +110,16 @@ export const getCreatorPostById = createAsyncThunk(
   async (id) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:5000/creator/post/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-      });
+      const res = await fetch(
+        `https://entrepreneur-woods.vercel.app/creator/post/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        }
+      );
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.error);
@@ -126,7 +135,7 @@ export const getCreatorPostById = createAsyncThunk(
 
 export const getAllCategories = async () => {
   try {
-    const res = await fetch(`http://localhost:5000/post/cat`, {
+    const res = await fetch(`https://entrepreneur-woods.vercel.app/post/cat`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -151,7 +160,7 @@ export const searchPost = createAsyncThunk("searchPost", async (search) => {
   try {
     const token = localStorage.getItem("token");
     const res = await fetch(
-      `http://localhost:5000/search/post?searchTerm=${search}`,
+      `https://entrepreneur-woods.vercel.app/search/post?searchTerm=${search}`,
       {
         method: "PUT",
         headers: {
