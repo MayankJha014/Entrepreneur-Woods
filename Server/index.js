@@ -16,6 +16,7 @@ app.use(
     origin: [
       "https://entrepreneur-woods-wprw-front.vercel.app",
       "http://localhost:3000",
+      "http://localhost:3001",
     ],
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     // allowedHeaders: ["Content-Type", "Authorization"], // Specify the allowed headers
