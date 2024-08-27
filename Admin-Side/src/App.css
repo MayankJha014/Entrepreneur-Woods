@@ -33,3 +33,7 @@ summary::marker {
   text-align: end;
   display: none;
 }
+
+.quill{
+ height: 20rem!important;
+}

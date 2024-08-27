@@ -306,7 +306,9 @@ const CreatePosts = () => {
                   quillObj = x;
                 }}
                 theme="snow"
-                className="h-full"
+                style={{
+                  height: "20rem!important",
+                }}
                 modules={modules}
                 value={value}
                 onChange={setValue}
