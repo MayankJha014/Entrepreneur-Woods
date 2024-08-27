@@ -12,7 +12,7 @@ export const postSlice = createSlice({
   name: "posts",
   initialState: {
     isLoading: false,
-    posts: null,
+    posts: [],
     isMessage: null,
     isError: null,
   },
@@ -24,7 +24,7 @@ export const postSlice = createSlice({
       state.isMessage = null;
     },
     clearPosts: (state) => {
-      state.posts = null;
+      state.posts = [];
     },
   },
   extraReducers: (builder) => {
@@ -55,7 +55,9 @@ export const postSlice = createSlice({
     });
     builder.addCase(getCreatorPost.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.posts = action.payload;
+      action.payload.forEach((element) => {
+        state.posts.push(element);
+      });
     });
     builder.addCase(getCreatorPost.rejected, (state, action) => {
       state.isLoading = false;
@@ -66,7 +68,7 @@ export const postSlice = createSlice({
     });
     builder.addCase(searchPost.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.posts = action.payload;
+      state.posts.push(action.payload);
     });
     builder.addCase(searchPost.rejected, (state, action) => {
       state.isLoading = false;

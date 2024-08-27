@@ -25,6 +25,10 @@ const CreatePosts = () => {
   const [tags, setTags] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
+  useEffect(() => {
+    console.log(inputValue);
+  }, [inputValue]);
+
   const dispatch = useDispatch();
 
   const { isLoading, isError, isMessage, posts } = useSelector(
@@ -34,8 +38,10 @@ const CreatePosts = () => {
   var quillObj;
 
   useEffect(() => {
+    console.log(posts);
     if (posts) {
       setFormData({
+        id: posts._id,
         title: posts.title,
         content: posts.content,
         thumbnail: posts.thumbnail,
@@ -48,6 +54,7 @@ const CreatePosts = () => {
   useEffect(() => {
     dispatch(clearError());
     dispatch(clearMessage());
+    dispatch(clearPosts());
     if (id) {
       dispatch(getCreatorPostById(id));
     }
@@ -94,12 +101,14 @@ const CreatePosts = () => {
   };
 
   useEffect(() => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      categories: tags,
+    }));
+  }, [tags]);
+  useEffect(() => {
     console.log(formData);
   }, [formData]);
-
-  useEffect(() => {
-    setFormData({ ...formData, ["categories"]: tags });
-  }, [tags]);
 
   useEffect(() => {
     const tempElement = document.createElement("div");
@@ -141,10 +150,23 @@ const CreatePosts = () => {
 
   const handleInputKeyDown = (event) => {
     if (event.keyCode === 32 && inputValue.trim() !== "") {
-      tags.includes(inputValue.trim())
-        ? setTags(tags)
-        : setTags([...tags, inputValue.trim()]);
-      setInputValue("");
+      const trimmedInput = inputValue.trim();
+
+      setTags((prevTags) => {
+        // Ensure prevTags is always an array
+        if (!Array.isArray(prevTags)) {
+          console.error("prevTags is not an array:", prevTags);
+          return [trimmedInput]; // Return a new array with the new tag if prevTags is not an array
+        }
+
+        if (prevTags.includes(trimmedInput)) {
+          return prevTags; // Return existing tags if the new one is a duplicate
+        }
+
+        return [...prevTags, trimmedInput]; // Add new tag if it doesn't exist
+      });
+
+      setInputValue(""); // Clear the input field
     }
   };
 
@@ -181,7 +203,10 @@ const CreatePosts = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    posts ? dispatch(updatePost(id)) : dispatch(creatPost(formData));
+
+    posts.length != 0
+      ? dispatch(updatePost(formData))
+      : dispatch(creatPost(formData));
   };
 
   if (isLoading) {

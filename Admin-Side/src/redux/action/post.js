@@ -34,15 +34,25 @@ export const creatPost = createAsyncThunk("createPost", async (formData) => {
 export const updatePost = createAsyncThunk("updatePost", async (formData) => {
   try {
     const token = localStorage.getItem("token");
+    console.log(formData);
+    const postData1 = {
+      title: formData.title,
+      description: formData.content,
+      thumbnail: formData.thumbnail,
+      categories: formData.categories,
+    };
+
+    console.log(postData1);
+
     const res = await fetch(
-      `https://entrepreneur-woods.vercel.app/creator/update-post/${formData}`,
+      `https://entrepreneur-woods.vercel.app/creator/update-post/${formData.id}`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: token,
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(postData1),
       }
     );
     if (!res.ok) {
@@ -58,30 +68,33 @@ export const updatePost = createAsyncThunk("updatePost", async (formData) => {
   }
 });
 
-export const getCreatorPost = createAsyncThunk("getCreatorPost", async () => {
-  try {
-    const token = localStorage.getItem("token");
-    const res = await fetch(
-      "https://entrepreneur-woods.vercel.app/creator/post",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
+export const getCreatorPost = createAsyncThunk(
+  "getCreatorPost",
+  async (page) => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(
+        `https://entrepreneur-woods.vercel.app/creator/post?page=${page}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        }
+      );
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error);
       }
-    );
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.error);
-    }
 
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    throw new Error(error);
+      const { posts } = await res.json();
+      return posts;
+    } catch (error) {
+      throw new Error(error);
+    }
   }
-});
+);
 
 export const generatePosts = createAsyncThunk("generatePosts", async () => {
   try {

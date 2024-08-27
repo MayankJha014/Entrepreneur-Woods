@@ -130,10 +130,13 @@ exports.rssFeedPost = async (req, res) => {
 
 exports.updatePost = async (req, res) => {
   try {
-    const postId = req.params.postId; // Assuming postId is a parameter in the route
+    const postId = req.params.postId;
+    // Assuming postId is a parameter in the route
     const { title, description, thumbnail, categories } = req.body;
 
+    console.log(title);
     let post = await PostSchema.findById(postId);
+    // console.log(post);
 
     if (!post) {
       return res.status(404).json({ error: "Post not found" });
@@ -152,10 +155,33 @@ exports.updatePost = async (req, res) => {
   }
 };
 
+// exports.getCreatorPost = async (req, res) => {
+//   try {
+//     const post = await PostSchema.find({ uid: req.user });
+//     res.status(200).json(post);
+//   } catch (e) {
+//     res.status(500).json({ error: e.message });
+//   }
+// };
+
 exports.getCreatorPost = async (req, res) => {
   try {
-    const post = await PostSchema.find({ uid: req.user });
-    res.status(200).json(post);
+    const { page = 1 } = req.query;
+    const limit = 10;
+    // Default to page 1 and 10 posts per page
+    const posts = await PostSchema.find({ uid: req.user })
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * limit)
+      .limit(Number(limit));
+
+    const totalPosts = await PostSchema.countDocuments({ uid: req.user });
+
+    res.status(200).json({
+      totalPosts,
+      currentPage: page,
+      totalPages: Math.ceil(totalPosts / limit),
+      posts,
+    });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }

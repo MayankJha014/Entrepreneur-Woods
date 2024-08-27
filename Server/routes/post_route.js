@@ -16,7 +16,7 @@ const {
 } = require("../controller/post_controller");
 
 postRouter.post("/creator/create-post", auth, createPost);
-postRouter.post("/creator/update-post/:id", auth, updatePost);
+postRouter.post("/creator/update-post/:postId", auth, updatePost);
 postRouter.get("/creator/post", auth, getCreatorPost);
 postRouter.put("/search/post", searchPost);
 postRouter.get("/most-view/post", getMostViewPost);

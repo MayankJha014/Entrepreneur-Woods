@@ -100,6 +100,7 @@ const Sidebar = ({ children }) => {
           className={`w-full relative ${
             sidebarWidth.sidebar ? "block" : "hidden sm:block"
           }  flex-1 min-h-full  scroll-smooth overflow-y-auto`}
+          id="allpost"
         >
           <Navbar />
           {children}
