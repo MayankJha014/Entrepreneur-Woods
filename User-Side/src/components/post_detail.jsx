@@ -45,15 +45,22 @@ const PostDetail = (props) => {
 
   const getContent = () => {
     const postContent = document.getElementById("content");
+
+    if (!postContent) {
+      console.error("Element with id 'content' not found.");
+      return;
+    }
+
     let content = posts.content.replace(
       "<p>The post  appeared first on .</p>",
       ""
     );
+
     content = content.replace(
       `<p><strong>Also Read:</strong></p>
-<ul>
-<li style="font-weight: bold;"><strong></strong></li>
-</ul> `,
+  <ul>
+  <li style="font-weight: bold;"><strong></strong></li>
+  </ul> `,
       ""
     );
     content = content.replace(`<p><strong>Also Read:</strong></p>`, "");
@@ -61,13 +68,24 @@ const PostDetail = (props) => {
     console.log(content);
     setSize(postContent.clientHeight / 17);
     postContent.innerHTML = content;
-    postContent
-      .querySelector("img")
-      .classList.add("aspect-[2.0]", "h-fit", "p-2", "!my-2");
-    const pTag = postContent.querySelectorAll("p");
-    pTag.forEach((x) => {
-      x.classList.add("my-1.5", "p-2");
-    });
+
+    // Ensure the img element exists before accessing classList
+    const img = postContent.querySelector("img");
+    if (img) {
+      img.classList.add("aspect-[2.0]", "h-fit", "p-2", "!my-2");
+    } else {
+      console.warn("No img element found in postContent.");
+    }
+
+    // Ensure there are p elements before adding classes
+    const pTags = postContent.querySelectorAll("p");
+    if (pTags.length > 0) {
+      pTags.forEach((x) => {
+        x.classList.add("my-1.5", "p-2");
+      });
+    } else {
+      console.warn("No p elements found in postContent.");
+    }
   };
 
   useEffect(() => {
