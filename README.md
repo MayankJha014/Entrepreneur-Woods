@@ -139,26 +139,18 @@ Include screenshots of different parts of the application:
 
 1. **Main Blog Feed:** Display posts, including those fetched from RSS feeds.
    ![Screenshot 2024-09-01 141921](https://github.com/user-attachments/assets/1c640b8b-1884-47de-8e47-e2c72dc7b285)
-
-![Screenshot 2024-09-01 142146](https://github.com/user-attachments/assets/1a033046-ea76-4ab7-b60f-7ab54817d1a1)
-
-![Screenshot 2024-09-01 142222](https://github.com/user-attachments/assets/51a07cf9-d30c-4347-85b0-d896baef4582)
-
-![Screenshot 2024-09-01 142258](https://github.com/user-attachments/assets/70f1ee0a-70a4-448f-be14-719645558587)
-
-![Screenshot 2024-09-01 142348](https://github.com/user-attachments/assets/c09e28ad-a0dd-489f-bd55-c32e75110935)
-
-![Screenshot 2024-09-01 142505](https://github.com/user-attachments/assets/7074d538-2e6d-4120-8f4f-16d85384a988)
-
-![Screenshot 2024-09-01 142532](https://github.com/user-attachments/assets/fae04fb8-2c99-4c95-8f66-81c773d6fa29)
+   ![Screenshot 2024-09-01 142146](https://github.com/user-attachments/assets/1a033046-ea76-4ab7-b60f-7ab54817d1a1)
+   ![Screenshot 2024-09-01 142222](https://github.com/user-attachments/assets/51a07cf9-d30c-4347-85b0-d896baef4582)
+   ![Screenshot 2024-09-01 142258](https://github.com/user-attachments/assets/70f1ee0a-70a4-448f-be14-719645558587)
+   ![Screenshot 2024-09-01 142348](https://github.com/user-attachments/assets/c09e28ad-a0dd-489f-bd55-c32e75110935)
+   ![Screenshot 2024-09-01 142505](https://github.com/user-attachments/assets/7074d538-2e6d-4120-8f4f-16d85384a988)
+   ![Screenshot 2024-09-01 142532](https://github.com/user-attachments/assets/fae04fb8-2c99-4c95-8f66-81c773d6fa29)
 
 2. **Admin Panel:** Demonstrate the capabilities of managing users and posts.
    ![Screenshot 2024-09-01 144329](https://github.com/user-attachments/assets/cd30a1c2-0543-4997-9bdf-affdbdef3677)
    ![Screenshot 2024-09-01 144348](https://github.com/user-attachments/assets/5e2b4207-d90e-4f3a-9650-6cb55199c700)
    ![Screenshot 2024-09-01 144413](https://github.com/user-attachments/assets/23039d3e-e6df-411e-bca7-531ad14c717d)
    ![Screenshot 2024-09-01 144439](https://github.com/user-attachments/assets/b15208a7-9ddc-468b-836c-a1bf818df986)
-
-3. **Responsive Design:** Show how the app adapts to mobile devices.
 
 ## License
 
