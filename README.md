@@ -63,7 +63,7 @@ Before you begin, ensure you have the following installed:
    Open your terminal and run:
 
    ```bash
-   git clone https://github.com/yourusername/blog-app.git
+   git clone https://github.com/MayankJha014/Entrepreneur-Woods.git
    cd blog-app
    ```
 
@@ -86,18 +86,6 @@ Before you begin, ensure you have the following installed:
      cd client
      npm install
      ```
-
-3. **Environment Configuration**
-
-   Create a `.env` file in the `server` directory to store environment variables:
-
-   ```bash
-   MONGO_URI=your_mongodb_connection_string
-   RSS_FEED_URL=https://example.com/rss-feed-url
-   PORT=5000
-   ```
-
-   Replace `your_mongodb_connection_string` with your actual MongoDB connection string. Update the `RSS_FEED_URL` with the actual RSS feed URL you want to fetch posts from.
 
 ### Running the Application
 
